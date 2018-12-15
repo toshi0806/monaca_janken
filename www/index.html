@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+      var hand_gu=0;
+      var hand_choki=1;
+      var hand_pa=2;
+      var hand_text = ["ぐー", "ちょき", "ぱー"];
+      var judge_win=0;
+      var judge_draw=1;
+      var judge_loose=2;
+      var judge = [
+        [judge_draw, judge_win, judge_loose],
+        [judge_loose, judge_draw, judge_win],
+        [judge_win, judge_loose, judge_draw],
+      ];
+      var judge_text = ["勝ち", "あいこ", "負け"];
+
+      var win_num = 0;
+
+      function gu() {
+        janken(hand_gu);
+      }
+
+      function choki() {
+        janken(hand_choki);
+      }
+
+      function pa() {
+        janken(hand_pa);
+      }
+
+      function janken(player_hand){
+        comp_hand = Math.floor(Math.random() * 3);
+        result = judge[player_hand][comp_hand];
+        msg="player:"+hand_text[player_hand]+"<br>"+
+            "comp:"+hand_text[comp_hand]+"<br>"+
+            "結果:" + judge_text[result];
+        $("#result").html(msg);
+        if(result == judge_win) {
+          win_num++;
+          $("#result2").html(win_num + "連勝!")
+        } else {
+          gameover();
+        }
+      }
+
+      function gameover() {
+        $("#result2").html("GAME OVER<br>"+win_num + "連勝でした。")
+      }
+    </script>
+</head>
+<body>
+  <h1 class="text-white bg-primary">じゃんけん</h1>
+  <div class="mx-auto" style="width: 200px">
+    <a onclick="gu();" class="btn btn-outline-primary hand" role="button">ぐー</a>
+    <a onclick="choki();" class="btn btn-outline-primary hand" role="button">ちょき</a>
+    <a onclick="pa();" class="btn btn-outline-primary hand" role="button">ぱー</a>
+  </div>
+  <div id="result" class="text-white bg-secondary">
+    結果は…
+  </div>
+  <div id="result2" class="bg-warning">
+  </div>
+</body>
+</html>

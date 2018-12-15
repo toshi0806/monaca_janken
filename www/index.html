@@ -51,20 +51,34 @@
         }
       }
 
+      function newgame() {
+        win_num = 0;
+        $(".hand").css("display", "inline");
+        $("#newgame").css("display", "none");
+        $("#result").html("じゃんけん・・・ぽん")
+        $("#result2").html("");
+      }
+
       function gameover() {
         $("#result2").html("GAME OVER<br>"+win_num + "連勝でした。")
+        $(".hand").css("display", "none");
+        $("#newgame").css("display", "inline");
       }
+
+      $(function(){
+        newgame();
+      })
     </script>
 </head>
 <body>
   <h1 class="text-white bg-primary">じゃんけん</h1>
   <div class="mx-auto" style="width: 200px">
-    <a onclick="gu();" class="btn btn-outline-primary hand" role="button">ぐー</a>
+    <a id="gu" onclick="gu();" class="btn btn-outline-primary hand" role="button">ぐー</a>
     <a onclick="choki();" class="btn btn-outline-primary hand" role="button">ちょき</a>
     <a onclick="pa();" class="btn btn-outline-primary hand" role="button">ぱー</a>
+    <a onclick="newgame();" class="btn btn-info text-white" id="newgame" role="button">New Game</a>
   </div>
   <div id="result" class="text-white bg-secondary">
-    結果は…
   </div>
   <div id="result2" class="bg-warning">
   </div>

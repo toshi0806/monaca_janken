@@ -64,7 +64,9 @@
         // 勝敗ごとの処理
         if(result == judge_win) {
           win_num++;
-          $("#result2").html(win_num + "連勝!")
+          $("#result2").html(win_num + "連勝!");
+        } else if (result == judge_draw) {
+          $("#result2").html("あいこ");
         } else {
           gameover();
         }

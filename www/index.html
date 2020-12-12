@@ -10,34 +10,34 @@
     <script src="keys.js"></script>
     <script>
       // じゃんけんのハンド用変数（定数）
-      var hand_gu=0;
-      var hand_choki=1;
-      var hand_pa=2;
+      const hand_gu=0;
+      const hand_choki=1;
+      const hand_pa=2;
       // ハンド表示用配列
-      var hand_text = ["ぐー", "ちょき", "ぱー"];
+      const hand_text = ["ぐー", "ちょき", "ぱー"];
       // 勝敗判定用変数（定数）
-      var judge_win=0;
-      var judge_draw=1;
-      var judge_loose=2;
+      let judge_win=0;
+      let judge_draw=1;
+      let judge_loose=2;
       // 勝敗判定表
-      var judge = [
+      const judge = [
         [judge_draw, judge_win, judge_loose],
         [judge_loose, judge_draw, judge_win],
         [judge_win, judge_loose, judge_draw],
       ];
       // 勝敗結果表示用配列
-      var judge_text = ["勝ち", "あいこ", "負け"];
+      const judge_text = ["勝ち", "あいこ", "負け"];
 
       // 連勝数記録
-      var win_num = 0;
+      let win_num = 0;
 
       // にふくら用おまじない
-      var ncmb = new NCMB(appKey, clientKey);
-      var JankenScore = ncmb.DataStore("JankenScore");
-      var key = "score";
+      let ncmb = new NCMB(appKey, clientKey);
+      let JankenScore = ncmb.DataStore("JankenScore");
+      const key = "score";
 
       // ハイスコア
-      var high_score = 0;
+      let high_score = 0;
 
       function gu() {
         janken(hand_gu);
@@ -91,7 +91,7 @@
       }
 
       function gameover() {
-        var msg = "GAME OVER<br>";
+        let msg = "GAME OVER<br>";
         if(win_num>0) {
           JankenScore.order(key, true).fetch()
           .then(function(result){

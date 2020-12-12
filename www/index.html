@@ -53,11 +53,11 @@
 
       function janken(player_hand){
         // コンピュータの手を決定
-        comp_hand = Math.floor(Math.random() * 3);
+       let comp_hand = Math.floor(Math.random() * 3);
         // 勝敗判定
-        result = judge[player_hand][comp_hand];
+        let result = judge[player_hand][comp_hand];
         // 結果表示
-        msg="player:"+hand_text[player_hand]+"<br>"+
+        let msg="player:"+hand_text[player_hand]+"<br>"+
             "comp:"+hand_text[comp_hand]+"<br>"+
             "結果:" + judge_text[result];
         $("#result").html(msg);
